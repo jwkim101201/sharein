@@ -32,7 +32,7 @@ export default function Home() {
     <div className='flex flex-col items-center font-mono'>
       <div className='text-center pt-12'>
         <p className='text-3xl'>Sharein</p>
-        <p>Easily share your images.</p> <br />
+        <p>Easily share your files.</p> <br />
         <div ref={drop} className='w-96 h-48 leading-[12rem] bg-slate-200 border-4 border-dashed border-slate-500'>
           <p className='text-slate-400 select-none'>Drag & drop here (max 64mb)</p>
         </div>
