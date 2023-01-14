@@ -2,7 +2,7 @@ import { Fields, File, Files, IncomingForm } from 'formidable'
 import { NextApiRequest, NextApiResponse } from 'next'
 import applyRateLimit from '../../middlewares/applyRateLimit'
 import conf from '../../config.json'
-import { readFileSync, writeFileSync } from 'fs'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs'
 import { join } from 'path'
 import { nanoid } from 'nanoid'
 
@@ -29,6 +29,10 @@ export default async function handler(
 
       if (!file) return res.json({ ok: false, error: 'invalid body' })
       if (file.size > 6.4e+7) return res.json({ ok: false, error: 'file is too big' })
+
+      if (!existsSync(conf.fileLocation)) {
+        mkdirSync(conf.fileLocation)
+      }
 
       const id = nanoid(6)
 
