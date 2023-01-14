@@ -22,7 +22,6 @@ export default async function handler(
     form.parse(req, async (err: any, _fields: Fields, files: Files) => {
       if (err) {
         res.json({ ok: false, error: 'internal server error'})
-        console.log(err)
         return
       }
 
