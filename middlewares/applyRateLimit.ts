@@ -19,7 +19,7 @@ export const getRateLimitMiddlewares = ({
   limit = 10,
   windowMs = 60 * 1000
 } = {}) => [
-  rateLimit({ keyGenerator: getIP, windowMs, max: limit })
+  rateLimit({ keyGenerator: getIP, windowMs, max: limit, message: { ok: false, error: 'too many requests' } })
 ]
 
 const middlewares = getRateLimitMiddlewares()
